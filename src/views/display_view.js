@@ -14,8 +14,14 @@ DisplayView.prototype.bindEvents = function(){
 };
 
 DisplayView.prototype.render = function(){
+
+    const page_title = document.querySelector('#logo')
+    page_title.textContent = 'Book Trip - George Orwell'
+
+
     for(let book of this.books){
     const title = document.createElement('h2');
+    title.setAttribute('id', book.volumeInfo.title)
     title.textContent = book.volumeInfo.title
     const name = document.createElement('h3');
     name.textContent = book.volumeInfo.authors[0]
@@ -24,18 +30,18 @@ DisplayView.prototype.render = function(){
     const bookCover = document.createElement('img');
     bookCover.src = book.volumeInfo.imageLinks.thumbnail;
     this.container.appendChild(bookCover);
-    
-
-    
     }
 
     var markerJura = L.marker([56.068, -5.77]).addTo(mymap);
     var markerHampStead = L.marker([51.558, -0.173]).addTo(mymap);
     var markerParis = L.marker([48.804, 2.29]).addTo(mymap);
-    markerJura.bindPopup("<b>Orwell wrote</b><br>1984 here.")
+    var markerWallington = L.marker([51.357, - 0.149]).addTo(mymap);
+    markerJura.bindPopup(`<b>Orwell wrote</b><br><a href="#1984">1984 </a>here.`) 
     markerHampStead.bindPopup("<b>Orwell wrote</b><br>Keep the Aspidistra Flying in Hampstead.")
     markerParis.bindPopup("<b>Here Down and Out</b><br>In Paris And London was written")
+    markerWallington.bindPopup(`<b>Wallington</b><br>Where<a href="#Homage to Catalonia"> Homage to Catalonia</a> was written.`)
 
+  
   
 
     
