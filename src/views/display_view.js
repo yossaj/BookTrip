@@ -20,6 +20,8 @@ DisplayView.prototype.bindEvents = function(){
 
 DisplayView.prototype.render = function(){
 
+    this.container.innerHTML = '';   
+
     const page_title = document.querySelector('#logo')
     page_title.textContent = 'Book Trip - George Orwell'
 
@@ -52,7 +54,6 @@ DisplayView.prototype.render = function(){
   
   
 
-    
     // this.container.appendChild(air)
     // this.container.appendChild(list)
     // list.appendChild(co)
