@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
     const author = new Author();
-    author.getData();
+    author.getDataOrwell();
+    author.getDataHemmingway();
 
     
  

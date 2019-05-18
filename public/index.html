@@ -24,7 +24,7 @@
     <aside>
         <div class="topnav">
             <a class="active" id="Orwell" href="">Orwell</a>
-            <a href="#news" id="hemmingway">Hemmingway</a>
+            <a href="" id="hemmingway">Hemmingway</a>
             <a href="#contact">Writer</a>
             <a href="#about">Writer</a>
         </div>
@@ -34,10 +34,10 @@
     <main>
        
     <div id="mapid"></div>
-    <script>
+    <script id="map">
     
         
-        var mymap = L.map('mapid').setView([54.863, -2.592], 5);
+        var mymap = L.map('mapid').setView([50.863, -1.592], 5);
     
         L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
             maxZoom: 18,
@@ -46,6 +46,10 @@
                 ' <a href="https://www.mapbox.com/"></a>',
             id: 'mapbox.streets'
         }).addTo(mymap);
+
+        
+      
+       
       
        
     </script>

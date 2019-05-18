@@ -6,35 +6,58 @@ const Author = function(){
 
 }
 
-Author.prototype.getData = function(){
+Author.prototype.getDataOrwell = function(){
     const request = new RequestHelper('https://www.googleapis.com/books/v1/volumes?q=george+orwell')
     
     request.get()
     .then((data)=>{
-        const correctAuthor = this.filterAuthor(data.items);
-        
+        const correctAuthor = this.filterAuthor(data.items, 'George Orwell');
         this.books = correctAuthor
-        // console.log();
-        
-        PubSub.publish('Author: Data Ready', this.books)
+        PubSub.publish('Orwell: Data Ready', this.books)
+    })
+}
+
+Author.prototype.getDataHemmingway = function(){
+    const request = new RequestHelper('https://www.googleapis.com/books/v1/volumes?q=ernest+hemingway')
+    
+    request.get()
+    .then((data)=>{
+        const correctAuthor = this.filterAuthor(data.items, 'Ernest Hemingway');
+        this.books = correctAuthor
+        PubSub.publish('Hemmingway: Data Ready', this.books)
     })
 }
 
 
-Author.prototype.filterAuthor = function(allBooks){
-    const hasAuthor = allBooks.filter(book =>
-        book.volumeInfo.authors !== undefined
-        ) 
 
-    const matchingAuthor = hasAuthor.filter(book => {
-        return book.volumeInfo.authors[0] === 'George Orwell'
-    })
+
+Author.prototype.filterAuthor = function(allBooks, authorName){
     
-    const writtenByOrwell = matchingAuthor.filter(book => {
+   
+    const hasAuthor = this.filterUndefined(allBooks);
+    const matchingAuthor = this.filterMatchingAuthor(hasAuthor, authorName)   
+    const onlyWriter = matchingAuthor.filter(book => {
         return book.volumeInfo.authors[1] === undefined
         // return book.volumeInfo.authors.length() === 1
     })
-    return writtenByOrwell
+    console.log(onlyWriter);
+    
+    return onlyWriter
+}
+
+Author.prototype.filterUndefined = function(allBooks) {
+    
+    const hasAuthor = allBooks.filter(book =>
+        book.volumeInfo.authors !== undefined)
+        return hasAuthor
+}
+
+Author.prototype.filterMatchingAuthor = function(hasAuthor, authorName){
+    const matchingAuthor = hasAuthor.filter(book => {
+        return book.volumeInfo.authors[0] === authorName
+    })
+    return matchingAuthor
+
 }
 
 module.exports =  Author;
