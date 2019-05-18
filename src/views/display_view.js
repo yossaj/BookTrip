@@ -9,7 +9,12 @@ const DisplayView = function(container){
 DisplayView.prototype.bindEvents = function(){
     PubSub.subscribe('Author: Data Ready',(event)=>{
         this.books = event.detail
-        this.render(this.books)
+        const OrwellButton = document.getElementById('Orwell')
+                OrwellButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    this.render(this.books)
+                })
+        
     })
 };
 
@@ -27,7 +32,6 @@ DisplayView.prototype.render = function(){
     name.textContent = book.volumeInfo.authors[0]
     const bookCover = document.createElement('img');
     bookCover.src = book.volumeInfo.imageLinks.thumbnail;
-    debugger;
     const description = document.createElement('p')
     description.textContent = book.volumeInfo.description
     this.container.appendChild(bookCover);
@@ -61,3 +65,5 @@ DisplayView.prototype.render = function(){
 }
 
 module.exports = DisplayView;
+
+

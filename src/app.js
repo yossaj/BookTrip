@@ -8,8 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const displayContainer = document.querySelector('#book-list')
     const displayView = new DisplayView(displayContainer)
-    displayView.bindEvents()
+    displayView.bindEvents();
+    
+  
 
     const author = new Author();
     author.getData();
+
+    
+ 
+
 });
+
+  
