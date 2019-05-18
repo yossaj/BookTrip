@@ -27,10 +27,13 @@ DisplayView.prototype.render = function(){
     name.textContent = book.volumeInfo.authors[0]
     const bookCover = document.createElement('img');
     bookCover.src = book.volumeInfo.imageLinks.thumbnail;
-    
+    debugger;
+    const description = document.createElement('p')
+    description.textContent = book.volumeInfo.description
     this.container.appendChild(bookCover);
     this.container.appendChild(title)
     this.container.appendChild(name)
+    this.container.appendChild(description)
     }
 
     var markerJura = L.marker([56.068, -5.77]).addTo(mymap);
