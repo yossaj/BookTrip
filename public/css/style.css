@@ -1,2 +1,44 @@
 
+
+
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10vw;
+  grid-gap: 1em;
+}
+
+header,
+main,
+footer {
+  grid-column: 1 / span 2;
+}
+
+/* Demo Specific Styles */
+body {
+  margin: 0 auto;
+  max-width: 56em;
+  padding: 1em 0;
+}
+
+header,
+aside,
+footer {
+  background: #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#book-list{
+  /* display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 1em; */
+}
+
+
+
+
+
+
 #mapid { height: 480px; }
