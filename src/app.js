@@ -1,6 +1,7 @@
 const  Author = require('./models/author.js')
 const DisplayView = require('./views/display_view.js')
 const HemmingwayDisplay = require('./views/hemmingway_view.js')
+const LinyutangDisplay = require('./views/linyutang_view.js')
 
 
 
@@ -13,16 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const hemmingwayDisplay = new HemmingwayDisplay(displayContainer)
     hemmingwayDisplay.bindEvents();
+
+    const linyutangDisplay = new LinyutangDisplay(displayContainer)
+    linyutangDisplay.bindEvents()
     
   
 
     const author = new Author();
     author.getDataOrwell();
-    author.getDataHemmingway();
-
-    
- 
-
+    author.getDataHemmingway(); 
+    author.getDataLinyutang();
 });
 
   

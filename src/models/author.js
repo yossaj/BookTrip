@@ -27,6 +27,16 @@ Author.prototype.getDataHemmingway = function(){
         PubSub.publish('Hemmingway: Data Ready', this.books)
     })
 }
+Author.prototype.getDataLinyutang = function(){
+    const request = new RequestHelper('https://www.googleapis.com/books/v1/volumes?q=lin+yutang')
+    
+    request.get()
+    .then((data)=>{
+        const correctAuthor = this.filterAuthor(data.items, 'Lin Yutang');
+        this.books = correctAuthor
+        PubSub.publish('Lin Yutang: Data Ready', this.books)
+    })
+}
 
 
 
