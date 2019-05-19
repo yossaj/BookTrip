@@ -6,6 +6,7 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: 10vw;
   grid-gap: 0.5em;
+  background-color: #DCD0C0;
 }
 
 header,
@@ -25,20 +26,30 @@ body {
 header,
 aside,
 footer {
-  background: #eaeaea;
+  background: #F4F4F4;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#book-list{
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 0.2em;
+h1{
+  font-family: 'Kurale', serif;
+  color: #C0B283;
+  font-size: 2rem;
 }
 
+#book-list{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 0.2em;
+  padding: 10px;
+  color: #373737;
+}
+
+
+
 div.text{
-  background-color: #f2f2f2;
+  background-color: #F4F4F4;
 
 }
 
@@ -54,13 +65,13 @@ div.image{
 
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background-color: #F4F4F4;
 
 }
 
 .topnav a {
   float: left;
-  color: #f2f2f2;
+  color: #373737;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;

@@ -29,7 +29,7 @@ DisplayView.prototype.render = function(){
     page_title.textContent = 'Book Trip - George Orwell'
 
 
-    for (let book of this.books) {
+ for (let book of this.books) {
         const textContainer = document.createElement('div')
         textContainer.setAttribute('class', 'text')
         const imgContainer = document.createElement('div')
@@ -51,11 +51,6 @@ DisplayView.prototype.render = function(){
         textContainer.appendChild(description)
     }
 
-    const orMap = document.querySelector('#map')
-    const content = orMap.textContent 
-    orMap.textContent = `${content}  mymap.setView([54.863, -2.592], 5);`
-    // console.log(content)
-    
 
     var markerJura = L.marker([56.068, -5.77]).addTo(mymap);
     var markerHampStead = L.marker([51.558, -0.173]).addTo(mymap);

@@ -1,16 +1,16 @@
 const PubSub = require('../helpers/pub_sub.js')
 const Author = require('../models/author.js')
 
-const HemmingwayDisplay = function(container){
+const NobokovDisplay = function (container) {
     this.container = container
 }
 
-
-HemmingwayDisplay.prototype.bindEvents = function () {
-    PubSub.subscribe('Hemmingway: Data Ready', (event) => {
+NobokovDisplay.prototype.bindEvents = function () {
+    PubSub.subscribe('Nobokov: Data Ready', (event) => {
         this.books = event.detail
-        const HemButton = document.getElementById('hemmingway')
-        HemButton.addEventListener('click', (event) => {
+        console.log(this.books)
+        const rowlButton = document.getElementById('nobokov')
+        rowlButton.addEventListener('click', (event) => {
             event.preventDefault();
             this.render(this.books)
         })
@@ -18,14 +18,20 @@ HemmingwayDisplay.prototype.bindEvents = function () {
     })
 };
 
-HemmingwayDisplay.prototype.render = function () {
+NobokovDisplay.prototype.render = function () {
+
     this.container.innerHTML = '';
-    
-    mymap.setView([40.680, -90.970], 4)
-    
-   
+
+
+
+
     const page_title = document.querySelector('#logo')
-    page_title.textContent = 'Book Trip - Ernest Hemingway'
+    page_title.textContent = 'Book Trip - Vladimir Nobokov'
+
+
+    mymap.setView([52.522, 13.412], 4)
+
+    console.log(this.books);
 
     for (let book of this.books) {
         const textContainer = document.createElement('div')
@@ -49,19 +55,17 @@ HemmingwayDisplay.prototype.render = function () {
         textContainer.appendChild(description)
     }
 
-    var blackIcon = L.icon({
-        iconUrl: '../../public/images/map-marker.svg',
-
-        iconSize: [32, 37], // size of the icon
-        iconAnchor: [16, 37], // point of the icon which will correspond to marker's location
-        popupAnchor: [-3, -35] // point from which the popup should open relative to the iconAnchor
-    });
-
-    const markerKeyWest = L.marker([24.694, -81.68 ], {icon: blackIcon}).addTo(mymap);
-    const markerPamplona = L.marker([42.821, -1.642], { icon: blackIcon }).addTo(mymap);
-    const markerSunValley = L.marker([34.114, -118.237], { icon: blackIcon }).addTo(mymap);
-    const markerWyoming = L.marker([43.269, -107.58], { icon: blackIcon }).addTo(mymap);
-    const markerChicago = L.marker([41.866, -87.687], { icon: blackIcon }).addTo(mymap);
+    const markerBerlin = L.marker([52.616, 13.447]).addTo(mymap);
+    const markerPeters = L.marker([ 59.88, 30.465]).addTo(mymap);
+    // const markerSunValley = L.marker([34.114, -118.237], { icon: blackIcon }).addTo(mymap);
+    markerBerlin.bindPopup(`<a href="https://en.wikipedia.org/wiki/Vladimir_Nabokov#Berlin_years_(1922%E2%80%9337)">Nabokov left Berlin to escape the Nazis</a>`);
+    markerPeters.bindPopup(`<a href="https://en.wikipedia.org/wiki/Vladimir_Nabokov#Russia">Nabokov was born in St. Petersburg in 1889</a>`);
 
 }
-    module.exports = HemmingwayDisplay;
+
+
+
+module.exports = NobokovDisplay;
+
+
+/* <img src="http://books.google.com/books/content?id=MIzUSDvML0kC&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;edge=curl&amp;source=gbs_api"></img> */

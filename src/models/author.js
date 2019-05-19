@@ -1,5 +1,6 @@
 const RequestHelper = require('../helpers/request_helper.js')
 const PubSub = require('../helpers/pub_sub.js')
+const key = 'AIzaSyDKYnNw1oaeEluPDXXo8NzGI8d7NzEtw7w'
 
 const Author = function(){
     this.books = []
@@ -7,7 +8,7 @@ const Author = function(){
 }
 
 Author.prototype.getDataOrwell = function(){
-    const request = new RequestHelper('https://www.googleapis.com/books/v1/volumes?q=george+orwell')
+    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=george+orwell&key=${key}`)
     
     request.get()
     .then((data)=>{
@@ -18,7 +19,7 @@ Author.prototype.getDataOrwell = function(){
 }
 
 Author.prototype.getDataHemmingway = function(){
-    const request = new RequestHelper('https://www.googleapis.com/books/v1/volumes?q=ernest+hemingway')
+    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=ernest+hemingway&key=${key}`)
     
     request.get()
     .then((data)=>{
@@ -28,13 +29,23 @@ Author.prototype.getDataHemmingway = function(){
     })
 }
 Author.prototype.getDataLinyutang = function(){
-    const request = new RequestHelper('https://www.googleapis.com/books/v1/volumes?q=lin+yutang')
+    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=lin+yutang&key=${key}`)
     
     request.get()
     .then((data)=>{
         const correctAuthor = this.filterAuthor(data.items, 'Lin Yutang');
         this.books = correctAuthor
         PubSub.publish('Lin Yutang: Data Ready', this.books)
+    })
+}
+Author.prototype.getDataNobokov = function(){
+    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=vladimir+nobokov&key=${key}`)
+    
+    request.get()
+    .then((data)=>{
+        const correctAuthor = this.filterAuthor(data.items, 'Vladimir Nabokov');
+        this.books = correctAuthor
+        PubSub.publish('Nobokov: Data Ready', this.books)
     })
 }
 
@@ -50,7 +61,6 @@ Author.prototype.filterAuthor = function(allBooks, authorName){
         return book.volumeInfo.authors[1] === undefined
         // return book.volumeInfo.authors.length() === 1
     })
-    console.log(onlyWriter);
     
     return onlyWriter
 }

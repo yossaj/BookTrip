@@ -2,6 +2,7 @@ const  Author = require('./models/author.js')
 const DisplayView = require('./views/display_view.js')
 const HemmingwayDisplay = require('./views/hemmingway_view.js')
 const LinyutangDisplay = require('./views/linyutang_view.js')
+const NobokovDisplay = require('./views/nobokov_view.js')
 
 
 
@@ -17,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const linyutangDisplay = new LinyutangDisplay(displayContainer)
     linyutangDisplay.bindEvents()
+
+    const nobokovDisplay = new NobokovDisplay(displayContainer)
+    nobokovDisplay.bindEvents();
     
   
 
@@ -24,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     author.getDataOrwell();
     author.getDataHemmingway(); 
     author.getDataLinyutang();
+    author.getDataNobokov()
 });
 
   

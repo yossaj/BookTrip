@@ -21,7 +21,7 @@ LinyutangDisplay.prototype.bindEvents = function () {
 LinyutangDisplay.prototype.render = function () {
     this.container.innerHTML = '';
 
-
+    
 
     mymap.setView([24.65, 117.828], 4)
 
@@ -50,6 +50,8 @@ LinyutangDisplay.prototype.render = function () {
         textContainer.appendChild(name)
         textContainer.appendChild(description)
     }
+
+
 
 }
 module.exports = LinyutangDisplay;
