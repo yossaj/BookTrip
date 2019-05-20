@@ -49,6 +49,40 @@ Author.prototype.getDataNobokov = function(){
     })
 }
 
+Author.prototype.getDataPratchett = function(){
+    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=terry+pratchett&key=${key}`)
+    
+    request.get()
+    .then((data)=>{
+        const correctAuthor = this.filterAuthor(data.items, 'Terry Pratchett');
+        this.books = correctAuthor
+        PubSub.publish('Pratchett: Data Ready', this.books)
+    })
+}
+
+Author.prototype.getDataGuin = function(){
+    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=ursala+le+guin&key=${key}`)
+    
+    request.get()
+    .then((data)=>{
+        const correctAuthor = this.filterAuthor(data.items, 'Ursula K. Le Guin');
+        this.books = correctAuthor
+        PubSub.publish('Guin: Data Ready', this.books)
+    })
+}
+
+
+Author.prototype.getDataDost = function(){
+    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=fyodor+dostoyevsky&key=${key}`)
+    
+    request.get()
+    .then((data)=>{
+        const correctAuthor = this.filterAuthor(data.items, 'Fyodor Dostoyevsky');
+        this.books = correctAuthor
+        PubSub.publish('Dost: Data Ready', this.books)
+    })
+}
+
 
 
 

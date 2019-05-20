@@ -22,9 +22,6 @@ DisplayView.prototype.render = function(){
 
     this.container.innerHTML = '';   
 
-   
-
-
     const page_title = document.querySelector('#logo')
     page_title.textContent = 'Book Trip - George Orwell'
 

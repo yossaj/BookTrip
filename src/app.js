@@ -3,6 +3,9 @@ const DisplayView = require('./views/display_view.js')
 const HemmingwayDisplay = require('./views/hemmingway_view.js')
 const LinyutangDisplay = require('./views/linyutang_view.js')
 const NobokovDisplay = require('./views/nobokov_view.js')
+const PratchettDisplay = require('./views/pratchett_view.js')
+const GuinDisplay = require('./views/guin_view.js')
+const DostDisplay = require('./views/dost_view.js')
 
 
 
@@ -21,6 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const nobokovDisplay = new NobokovDisplay(displayContainer)
     nobokovDisplay.bindEvents();
+
+    const pratchettDisplay = new PratchettDisplay(displayContainer)
+    pratchettDisplay.bindEvents();
+
+    const guinDisplay = new GuinDisplay(displayContainer)
+    guinDisplay.bindEvents();
+    
+    const dostDisplay = new DostDisplay(displayContainer)
+    dostDisplay.bindEvents();
     
   
 
@@ -28,7 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
     author.getDataOrwell();
     author.getDataHemmingway(); 
     author.getDataLinyutang();
-    author.getDataNobokov()
+    author.getDataNobokov();
+    author.getDataPratchett();
+    author.getDataGuin();
+    author.getDataDost();
 });
 
   

@@ -1,15 +1,16 @@
 const PubSub = require('../helpers/pub_sub.js')
 const Author = require('../models/author.js')
 
-const NobokovDisplay = function (container) {
-    this.container = container
+const GuinDisplay = function (container) {
+    this.container = container;
+
 }
 
-NobokovDisplay.prototype.bindEvents = function () {
-    PubSub.subscribe('Nobokov: Data Ready', (event) => {
+GuinDisplay.prototype.bindEvents = function () {
+    PubSub.subscribe('Guin: Data Ready', (event) => {
         this.books = event.detail
-        const rowlButton = document.getElementById('nobokov')
-        rowlButton.addEventListener('click', (event) => {
+        const guinButton = document.getElementById('guin')
+        guinButton.addEventListener('click', (event) => {
             event.preventDefault();
             this.render(this.books)
         })
@@ -17,20 +18,15 @@ NobokovDisplay.prototype.bindEvents = function () {
     })
 };
 
-NobokovDisplay.prototype.render = function () {
 
+GuinDisplay.prototype.render = function () {
     this.container.innerHTML = '';
 
-
+    mymap.setView([40.680, -90.970], 4)
 
 
     const page_title = document.querySelector('#logo')
-    page_title.textContent = 'Book Trip - Vladimir Nobokov'
-
-
-    mymap.setView([52.522, 13.412], 4)
-
-    console.log(this.books);
+    page_title.textContent = 'Book Trip - Ernest Hemingway'
 
     for (let book of this.books) {
         const textContainer = document.createElement('div')
@@ -54,17 +50,6 @@ NobokovDisplay.prototype.render = function () {
         textContainer.appendChild(description)
     }
 
-    const markerBerlin = L.marker([52.616, 13.447]).addTo(mymap);
-    const markerPeters = L.marker([ 59.88, 30.465]).addTo(mymap);
-    // const markerSunValley = L.marker([34.114, -118.237], { icon: blackIcon }).addTo(mymap);
-    markerBerlin.bindPopup(`<a href="https://en.wikipedia.org/wiki/Vladimir_Nabokov#Berlin_years_(1922%E2%80%9337)">Nabokov left Berlin to escape the Nazis</a>`);
-    markerPeters.bindPopup(`<a href="https://en.wikipedia.org/wiki/Vladimir_Nabokov#Russia">Nabokov was born in St. Petersburg in 1889</a>`);
-
 }
 
-
-
-module.exports = NobokovDisplay;
-
-
-/* <img src="http://books.google.com/books/content?id=MIzUSDvML0kC&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;edge=curl&amp;source=gbs_api"></img> */
+module.exports = GuinDisplay;
