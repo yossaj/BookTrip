@@ -7,16 +7,35 @@ const Author = function(){
 
 }
 
-Author.prototype.getDataOrwell = function(){
-    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=george+orwell&key=${key}`)
-    
-    request.get()
-    .then((data)=>{
-        const correctAuthor = this.filterAuthor(data.items, 'George Orwell');
-        this.books = correctAuthor
-        PubSub.publish('Orwell: Data Ready', this.books)
-    })
+Author.prototype.bindEvents = function(){
+    this.getData('george+orwell', 'George Orwell', 'Orwell: Data Ready')
 }
+
+Author.prototype.getData = function (search, name, channel) {
+    console.log(search,name,channel)
+    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${key}`)
+
+    request.get()
+        .then((data) => {
+            
+            const correctAuthor = this.filterAuthor(data.items, `${name}`);
+            this.books = correctAuthor
+            console.log(name);
+            PubSub.publish(`${channel}`, this.books)
+        })
+}
+
+
+// Author.prototype.getDataOrwell = function(){
+//     const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=george+orwell&key=${key}`)
+    
+//     request.get()
+//     .then((data)=>{
+//         const correctAuthor = this.filterAuthor(data.items, 'George Orwell');
+//         this.books = correctAuthor
+//         PubSub.publish('Orwell: Data Ready', this.books)
+//     })
+// }
 
 Author.prototype.getDataHemmingway = function(){
     const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=ernest+hemingway&key=${key}`)

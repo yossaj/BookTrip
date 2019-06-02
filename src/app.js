@@ -37,7 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
     const author = new Author();
-    author.getDataOrwell();
+    author.bindEvents()
+    // author.getDataOrwell();
     author.getDataHemmingway(); 
     author.getDataLinyutang();
     author.getDataNobokov();

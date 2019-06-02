@@ -9,6 +9,8 @@ const DisplayView = function(container){
 DisplayView.prototype.bindEvents = function(){
     PubSub.subscribe('Orwell: Data Ready',(event)=>{
         this.books = event.detail
+        console.log(this.books);
+        
         const OrwellButton = document.getElementById('Orwell')
                 OrwellButton.addEventListener('click', (event) => {
                     event.preventDefault();
@@ -57,22 +59,7 @@ DisplayView.prototype.render = function(){
     markerHampStead.bindPopup("<b>Orwell wrote</b><br>Keep the Aspidistra Flying in Hampstead.")
     markerParis.bindPopup("<b>Here Down and Out</b><br>In Paris And London was written")
     markerWallington.bindPopup(`<b>Wallington</b><br>Where<a href="#Homage to Catalonia"> Homage to Catalonia</a> was written.`)
-    mymap.setView([54.863, -2.592], 5);
-
-    
-
-  
-  
-
-    // this.container.appendChild(air)
-    // this.container.appendChild(list)
-    // list.appendChild(co)
-    // list.appendChild(h)
-    // list.appendChild(p25)
-    // list.appendChild(p10)
-    // list.appendChild(o3)
-    // this.container.appendChild(time)
-    
+    mymap.setView([54.863, -2.592], 5);  
 }
 
 module.exports = DisplayView;

@@ -50,7 +50,7 @@ HemmingwayDisplay.prototype.render = function () {
     }
 
     var blackIcon = L.icon({
-        iconUrl: '../../public/images/map-marker.svg',
+        iconUrl: 'images/map-marker.svg',
 
         iconSize: [32, 37], // size of the icon
         iconAnchor: [16, 37], // point of the icon which will correspond to marker's location

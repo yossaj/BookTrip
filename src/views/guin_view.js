@@ -50,6 +50,9 @@ GuinDisplay.prototype.render = function () {
         textContainer.appendChild(description)
     }
 
+
+    var markerBerkeley = L.marker([37.873, -122.27]).addTo(mymap);
+    var markerPortland = L.marker([45.576, -122.66]).addTo(mymap);
 }
 
 module.exports = GuinDisplay;
