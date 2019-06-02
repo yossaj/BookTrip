@@ -33,18 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const dostDisplay = new DostDisplay(displayContainer)
     dostDisplay.bindEvents();
-    
-  
 
     const author = new Author();
     author.bindEvents()
-    // author.getDataOrwell();
-    // author.getDataHemmingway(); 
-    // author.getDataLinyutang();
-    // author.getDataNobokov();
-    // author.getDataPratchett();
-    // author.getDataGuin();
-    // author.getDataDost();
+
 });
 
   
