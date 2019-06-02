@@ -39,12 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const author = new Author();
     author.bindEvents()
     // author.getDataOrwell();
-    author.getDataHemmingway(); 
-    author.getDataLinyutang();
-    author.getDataNobokov();
-    author.getDataPratchett();
-    author.getDataGuin();
-    author.getDataDost();
+    // author.getDataHemmingway(); 
+    // author.getDataLinyutang();
+    // author.getDataNobokov();
+    // author.getDataPratchett();
+    // author.getDataGuin();
+    // author.getDataDost();
 });
 
   

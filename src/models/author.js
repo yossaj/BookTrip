@@ -9,6 +9,12 @@ const Author = function(){
 
 Author.prototype.bindEvents = function(){
     this.getData('george+orwell', 'George Orwell', 'Orwell: Data Ready')
+    this.getData('ernest+hemingway', 'Ernest Hemingway','Hemmingway: Data Ready')
+    this.getData('lin+yu+tang', 'Lin Yutang', 'Lin Yutang: Data Ready')
+    this.getData('vladimir+nobokov', 'Vladimir Nabokov', 'Nobokov: Data Ready')
+    this.getData('terry+pratchett', 'Terry Pratchett', 'Pratchett: Data Ready')
+    this.getData('ursala+le+guin', 'Ursula K. Le Guin', 'Guin: Data Ready')
+    this.getData('fyodor+dostoyevsky', 'Fyodor Dostoyevsky', 'Dost: Data Ready')
 }
 
 Author.prototype.getData = function (search, name, channel) {
@@ -20,11 +26,53 @@ Author.prototype.getData = function (search, name, channel) {
             
             const correctAuthor = this.filterAuthor(data.items, `${name}`);
             this.books = correctAuthor
-            console.log(name);
             PubSub.publish(`${channel}`, this.books)
         })
 }
 
+// Author.prototype.getDataGuin = function(){
+//     const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=ursala+le+guin&key=${key}`)
+    
+//     request.get()
+//     .then((data)=>{
+//         const correctAuthor = this.filterAuthor(data.items, 'Ursula K. Le Guin');
+//         this.books = correctAuthor
+//         PubSub.publish('Guin: Data Ready', this.books)
+//     })
+// }
+
+
+// Author.prototype.getDataDost = function(){
+//     const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=fyodor+dostoyevsky&key=${key}`)
+    
+//     request.get()
+//     .then((data)=>{
+//         const correctAuthor = this.filterAuthor(data.items, 'Fyodor Dostoyevsky');
+//         this.books = correctAuthor
+//         PubSub.publish('Dost: Data Ready', this.books)
+//     })
+// }
+// Author.prototype.getDataLinyutang = function(){
+//     const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=lin+yutang&key=${key}`)
+    
+//     request.get()
+//     .then((data)=>{
+//         const correctAuthor = this.filterAuthor(data.items, 'Lin Yutang');
+//         this.books = correctAuthor
+//         PubSub.publish('Lin Yutang: Data Ready', this.books)
+//     })
+// }
+
+// Author.prototype.getDataHemmingway = function(){
+//     const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=ernest+hemingway&key=${key}`)
+    
+//     request.get()
+//     .then((data)=>{
+//         const correctAuthor = this.filterAuthor(data.items, 'Ernest Hemingway');
+//         this.books = correctAuthor
+//         PubSub.publish('Hemmingway: Data Ready', this.books)
+//     })
+// }
 
 // Author.prototype.getDataOrwell = function(){
 //     const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=george+orwell&key=${key}`)
@@ -37,70 +85,28 @@ Author.prototype.getData = function (search, name, channel) {
 //     })
 // }
 
-Author.prototype.getDataHemmingway = function(){
-    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=ernest+hemingway&key=${key}`)
+// Author.prototype.getDataNobokov = function(){
+//     const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=vladimir+nobokov&key=${key}`)
     
-    request.get()
-    .then((data)=>{
-        const correctAuthor = this.filterAuthor(data.items, 'Ernest Hemingway');
-        this.books = correctAuthor
-        PubSub.publish('Hemmingway: Data Ready', this.books)
-    })
-}
-Author.prototype.getDataLinyutang = function(){
-    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=lin+yutang&key=${key}`)
-    
-    request.get()
-    .then((data)=>{
-        const correctAuthor = this.filterAuthor(data.items, 'Lin Yutang');
-        this.books = correctAuthor
-        PubSub.publish('Lin Yutang: Data Ready', this.books)
-    })
-}
-Author.prototype.getDataNobokov = function(){
-    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=vladimir+nobokov&key=${key}`)
-    
-    request.get()
-    .then((data)=>{
-        const correctAuthor = this.filterAuthor(data.items, 'Vladimir Nabokov');
-        this.books = correctAuthor
-        PubSub.publish('Nobokov: Data Ready', this.books)
-    })
-}
+//     request.get()
+//     .then((data)=>{
+//         const correctAuthor = this.filterAuthor(data.items, 'Vladimir Nabokov');
+//         this.books = correctAuthor
+//         PubSub.publish('Nobokov: Data Ready', this.books)
+//     })
+// }
 
-Author.prototype.getDataPratchett = function(){
-    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=terry+pratchett&key=${key}`)
+// Author.prototype.getDataPratchett = function(){
+//     const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=terry+pratchett&key=${key}`)
     
-    request.get()
-    .then((data)=>{
-        const correctAuthor = this.filterAuthor(data.items, 'Terry Pratchett');
-        this.books = correctAuthor
-        PubSub.publish('Pratchett: Data Ready', this.books)
-    })
-}
+//     request.get()
+//     .then((data)=>{
+//         const correctAuthor = this.filterAuthor(data.items, 'Terry Pratchett');
+//         this.books = correctAuthor
+//         PubSub.publish('Pratchett: Data Ready', this.books)
+//     })
+// }
 
-Author.prototype.getDataGuin = function(){
-    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=ursala+le+guin&key=${key}`)
-    
-    request.get()
-    .then((data)=>{
-        const correctAuthor = this.filterAuthor(data.items, 'Ursula K. Le Guin');
-        this.books = correctAuthor
-        PubSub.publish('Guin: Data Ready', this.books)
-    })
-}
-
-
-Author.prototype.getDataDost = function(){
-    const request = new RequestHelper(`https://www.googleapis.com/books/v1/volumes?q=fyodor+dostoyevsky&key=${key}`)
-    
-    request.get()
-    .then((data)=>{
-        const correctAuthor = this.filterAuthor(data.items, 'Fyodor Dostoyevsky');
-        this.books = correctAuthor
-        PubSub.publish('Dost: Data Ready', this.books)
-    })
-}
 
 
 
